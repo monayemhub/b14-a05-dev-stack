@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
 
         <p className="font-bold text-xs sm:text-xl">
-          Dev
+          Dev&nbsp;
           <span className={`${brandTheme} bg-clip-text text-transparent`}>
             Stack
           </span>
