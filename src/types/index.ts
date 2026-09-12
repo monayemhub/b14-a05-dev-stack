@@ -18,4 +18,5 @@ export interface Technology {
   rating: number;
   difficulty: Difficulty;
   badge: string;
+  isAdded?: boolean;
 }
