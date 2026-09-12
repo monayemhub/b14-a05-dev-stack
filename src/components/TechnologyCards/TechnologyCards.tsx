@@ -14,6 +14,20 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
   const [availableTechnologies, setAvailableTechnologies] =
     useState<Technology[]>(technologies);
 
+  const handleAddClick = (technologyId: string): void => {
+    const nextAvailableTechnologies: Technology[] = availableTechnologies.map(
+      (availableTechnology) => {
+        if (availableTechnology.id === technologyId) {
+          return { ...availableTechnology, isAdded: true };
+        }
+
+        return { ...availableTechnology };
+      },
+    );
+
+    setAvailableTechnologies(nextAvailableTechnologies);
+  };
+
   return (
     <section className="px-7 mb-20 container mx-auto">
       <h2 className="font-bold sm:font-extrabold text-2xl sm:text-4xl text-center md:text-left mb-1 sm:mb-2">
@@ -29,8 +43,12 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
 
       <div className="grid grid-cols-1 md:grid-cols-[auto_calc((100%-20px)/2)] lg:grid-cols-[auto_calc((100%-2*20px)/3)] xl:grid-cols-[auto_calc((100%-3*20px)/4)] gap-5 ">
         <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 auto-rows-72">
-          {availableTechnologies.map((technology) => (
-            <TechnologyCard key={technology.id} technology={technology} />
+          {availableTechnologies.map((availableTechnology) => (
+            <TechnologyCard
+              key={availableTechnology.id}
+              availableTechnology={availableTechnology}
+              handleAddClick={handleAddClick}
+            />
           ))}
         </ul>
 

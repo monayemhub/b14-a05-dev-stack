@@ -14,7 +14,7 @@ const Footer = () => {
               </div>
 
               <p className="font-bold text-xs sm:text-xl">
-                Dev&nbsp;
+                Dev{" "}
                 <span className={`${brandTheme} bg-clip-text text-transparent`}>
                   Stack
                 </span>
