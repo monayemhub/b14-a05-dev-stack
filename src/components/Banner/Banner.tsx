@@ -20,12 +20,12 @@ const Banner = () => {
 
         <div className="flex gap-3 justify-center lg:justify-start items-center">
           <button
-            className={`font-normal sm:font-semibold text-xs sm:text-sm text-white ${brandTheme} px-6 py-3 rounded-lg`}
+            className={`font-normal sm:font-semibold text-xs sm:text-sm text-white ${brandTheme} px-6 py-3 rounded-lg cursor-pointer`}
           >
             Explore Technologies
           </button>
 
-          <button className="font-normal sm:font-semibold text-xs sm:text-sm text-[#374151] px-6 py-3 rounded-lg border border-[#E5E7EB]">
+          <button className="font-normal sm:font-semibold text-xs sm:text-sm text-[#374151] px-6 py-3 rounded-lg border border-[#E5E7EB] cursor-pointer">
             Learn More
           </button>
         </div>
