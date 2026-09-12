@@ -3,9 +3,15 @@ import StackCard from "../StackCard/StackCard.tsx";
 
 interface YourStackProps {
   availableTechnologies: Technology[];
+  handleRemoveClick: (technologyId: string) => void;
+  handleRemoveAllClick: () => void;
 }
 
-const YourStack = ({ availableTechnologies }: YourStackProps) => {
+const YourStack = ({
+  availableTechnologies,
+  handleRemoveClick,
+  handleRemoveAllClick,
+}: YourStackProps) => {
   const addedTechnologies: Technology[] = availableTechnologies.filter(
     (availableTechnology) => availableTechnology.isAdded,
   );
@@ -26,13 +32,17 @@ const YourStack = ({ availableTechnologies }: YourStackProps) => {
             <StackCard
               key={addedTechnology.id}
               addedTechnology={addedTechnology}
+              handleRemoveClick={handleRemoveClick}
             />
           ))}
         </ul>
       )}
 
       {!!addedTechnologies.length && (
-        <button className="block font-semibold text-sm text-[#D82C20] w-full py-2 border border-[#ED8C85] rounded-lg cursor-pointer">
+        <button
+          onClick={handleRemoveAllClick}
+          className="block font-semibold text-sm text-[#D82C20] w-full py-2 border border-[#ED8C85] rounded-lg cursor-pointer"
+        >
           Remove All
         </button>
       )}

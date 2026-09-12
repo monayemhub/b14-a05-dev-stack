@@ -28,6 +28,38 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
     setAvailableTechnologies(nextAvailableTechnologies);
   };
 
+  const handleRemoveClick = (technologyId: string): void => {
+    const nextAvailableTechnologies: Technology[] = availableTechnologies.map(
+      (availableTechnology) => {
+        if (availableTechnology.id === technologyId) {
+          delete availableTechnology.isAdded;
+
+          return { ...availableTechnology };
+        }
+
+        return { ...availableTechnology };
+      },
+    );
+
+    setAvailableTechnologies(nextAvailableTechnologies);
+  };
+
+  const handleRemoveAllClick = (): void => {
+    const nextAvailableTechnologies: Technology[] = availableTechnologies.map(
+      (availableTechnology) => {
+        if (availableTechnology.isAdded) {
+          delete availableTechnology.isAdded;
+
+          return { ...availableTechnology };
+        }
+
+        return { ...availableTechnology };
+      },
+    );
+
+    setAvailableTechnologies(nextAvailableTechnologies);
+  };
+
   return (
     <section className="px-7 mb-20 container mx-auto">
       <h2 className="font-bold sm:font-extrabold text-2xl sm:text-4xl text-center md:text-left mb-1 sm:mb-2">
@@ -52,7 +84,11 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
           ))}
         </ul>
 
-        <YourStack availableTechnologies={availableTechnologies} />
+        <YourStack
+          availableTechnologies={availableTechnologies}
+          handleRemoveClick={handleRemoveClick}
+          handleRemoveAllClick={handleRemoveAllClick}
+        />
       </div>
     </section>
   );

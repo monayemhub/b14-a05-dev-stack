@@ -3,9 +3,10 @@ import { RxCross2 } from "react-icons/rx";
 
 interface StackCardProps {
   addedTechnology: Technology;
+  handleRemoveClick: (technologyId: string) => void;
 }
 
-const StackCard = ({ addedTechnology }: StackCardProps) => {
+const StackCard = ({ addedTechnology, handleRemoveClick }: StackCardProps) => {
   return (
     <li className="flex justify-between items-center p-2.5 border border-[#E2E8F0] rounded-lg">
       <div className="flex items-center gap-2">
@@ -25,7 +26,11 @@ const StackCard = ({ addedTechnology }: StackCardProps) => {
         </div>
       </div>
 
-      <RxCross2 color="#D82C20" className="cursor-pointer" />
+      <RxCross2
+        onClick={() => handleRemoveClick(addedTechnology.id)}
+        color="#D82C20"
+        className="cursor-pointer"
+      />
     </li>
   );
 };
