@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <footer>
       <div className="border-y border-[#F1F5F9]">
-        <div className="flex justify-between px-7 mt-8 lg:mt-16 mb-6 lg:mb-14 container mx-auto">
-          <div className="flex-[1_1_auto] space-y-3">
+        <div className="flex flex-col lg:flex-row justify-between items-center px-7 mt-8 lg:mt-16 mb-6 lg:mb-14 container mx-auto">
+          <div className="space-y-3">
             <div className="flex justify-center lg:justify-start items-center gap-1 sm:gap-2 text-center lg:text-left">
               <div className="w-6 sm:w-8">
                 <img src={Logo} alt="Dev Stack logo" className="align-bottom" />

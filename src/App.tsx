@@ -1,7 +1,18 @@
+import { Suspense } from "react";
 import "./App.css";
 import Banner from "./components/Banner/Banner.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import Navbar from "./components/Navbar/Navbar.tsx";
+import TechnologyCards from "./components/TechnologyCards/TechnologyCards.tsx";
+import type { Technology } from "./types/index.ts";
+
+const fetchData = async (source: string): Promise<Technology[]> => {
+  const response: Response = await fetch(source);
+
+  const data: Technology[] = await response.json();
+
+  return data;
+};
 
 function App() {
   return (
@@ -12,6 +23,12 @@ function App() {
 
       <main>
         <Banner />
+
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <TechnologyCards
+            technologyDataPromise={fetchData("/technologies.json")}
+          />
+        </Suspense>
       </main>
 
       <Footer />
