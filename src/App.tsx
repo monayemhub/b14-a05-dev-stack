@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar.tsx";
 import TechnologyCards from "./components/TechnologyCards/TechnologyCards.tsx";
 import type { Technology } from "./types/index.ts";
 import { ToastContainer } from "react-toastify";
+import Loader from "./components/Loader/Loader.tsx";
 
 const fetchData = async (source: string): Promise<Technology[]> => {
   const response: Response = await fetch(source);
@@ -26,7 +27,7 @@ function App() {
       <main>
         <Banner />
 
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<Loader />}>
           <TechnologyCards
             technologyDataPromise={fetchData("/technologies.json")}
           />
