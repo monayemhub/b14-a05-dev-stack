@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer.tsx";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import TechnologyCards from "./components/TechnologyCards/TechnologyCards.tsx";
 import type { Technology } from "./types/index.ts";
+import { ToastContainer } from "react-toastify";
 
 const fetchData = async (source: string): Promise<Technology[]> => {
   const response: Response = await fetch(source);
@@ -17,6 +18,7 @@ const fetchData = async (source: string): Promise<Technology[]> => {
 function App() {
   return (
     <>
+      <ToastContainer />
       <header className="sticky top-0">
         <Navbar />
       </header>

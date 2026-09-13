@@ -3,6 +3,7 @@ import type { Technology } from "../../types/index.ts";
 import TechnologyCard from "../TechnologyCard/TechnologyCard.tsx";
 import brandTheme from "../../styles/brand_theme.ts";
 import YourStack from "../YourStack/YourStack.tsx";
+import { Bounce, toast } from "react-toastify";
 
 interface TechnologyCardsProps {
   technologyDataPromise: Promise<Technology[]>;
@@ -18,6 +19,18 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
     const nextAvailableTechnologies: Technology[] = availableTechnologies.map(
       (availableTechnology) => {
         if (availableTechnology.id === technologyId) {
+          toast(`${availableTechnology.name} is added.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+
           return { ...availableTechnology, isAdded: true };
         }
 
@@ -32,6 +45,18 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
     const nextAvailableTechnologies: Technology[] = availableTechnologies.map(
       (availableTechnology) => {
         if (availableTechnology.id === technologyId) {
+          toast(`${availableTechnology.name} is removed.`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+
           delete availableTechnology.isAdded;
 
           return { ...availableTechnology };
@@ -56,6 +81,18 @@ const TechnologyCards = ({ technologyDataPromise }: TechnologyCardsProps) => {
         return { ...availableTechnology };
       },
     );
+
+    toast("Your stack is cleared.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
     setAvailableTechnologies(nextAvailableTechnologies);
   };
